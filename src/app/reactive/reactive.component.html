@@ -1,0 +1,125 @@
+<br><br><br><br><br>
+
+<div>
+    <p>
+        Count = {{ _maths.count }}
+    </p>
+    <br>
+    <button (click) = "increase()">separate-service</button>
+</div>
+
+
+<p>reactive works!</p>
+
+<head>
+<title>Student Registration Form</title>
+
+</head>
+ 
+<body>
+<h4><i>REACTIVE FORM - STUDENT REGISTRATION DETAILS</i></h4>
+
+<form [formGroup] = "userform" (ngSubmit) = "onsubmit()" >
+<table align="center" cellpadding = "10">
+ 
+<!----- First Name ---------------------------------------------------------->
+<div>
+<tr>
+<td>FIRST NAME</td>
+<td><input type="text" name="First_Name" formControlName = "First_Name" maxlength="30" required/>
+</td>
+</tr>
+
+
+<!----- Last Name ---------------------------------------------------------->
+
+<tr>
+<td>LAST NAME</td>
+<td><input type="text" name="Last_Name" formControlName = "Last_Name" maxlength="30"/>
+</td>
+</tr>
+
+
+<!----- Email Id ---------------------------------------------------------->
+
+<tr>
+<td>EMAIL ID</td>
+<td><input type="text" name="Email_Id" formControlName = "Email_Id" maxlength="100" /></td>
+<span *ngIf = "!userform.get('Email_Id').valid && userform.get('Email_Id').touched"><td>Please enter the valid email</td></span>
+</tr>
+
+ 
+<!----- Mobile Number ---------------------------------------------------------->
+
+<tr>
+<td>MOBILE NUMBER</td>
+<td>
+<input type="text" name="Mobile_Number" formControlName = "Mobile_Number" maxlength="10" />
+</td>
+</tr>
+
+ 
+<!----- Gender ----------------------------------------------------------->
+
+<tr>
+<td>GENDER</td>
+<td>
+Male <input type="radio" name="Gender" value="Male" formControlName = "Gender" />
+Female <input type="radio" name="Gender" value="Female" formControlName = "Gender" />
+</td>
+</tr>
+</div>
+
+<div formGroupName = "address">
+<!----- City ---------------------------------------------------------->
+<tr>
+    <td>CITY</td>
+    <td>
+    <input type="text" name="city" formControlName = "city" />
+    </td>
+</tr>
+
+<!----- State ---------------------------------------------------------->
+<tr>
+    <td>STATE</td>
+    <td>
+    <input type="text" name="state" formControlName = "state" />
+    </td>
+</tr>
+
+<!----- Country ----------------------------------------------------------->
+<tr>
+    <td>COUNTRY</td>
+    <td>
+        <select name="country" formControlName = "country">
+            <option *ngFor = "let i of country_list">
+                {{i.country_name}}
+            </option>
+        </select>
+    </td>
+    </tr>
+ 
+<!----- Pincode ---------------------------------------------------------->
+<tr>
+    <td>PINCODE</td>
+    <td>
+    <input type="text" name="pincode" formControlName = "pincode" />
+    </td>
+</tr>
+</div> 
+
+<!----- Submit------------------------------------------------->
+<tr>
+<td colspan="2" align="center">
+<button type="button">Set Value</button>
+<input type="submit" value="Submit" [disabled] = "!userform.valid">
+</td>
+</tr>
+</table>
+</form>
+ 
+
+<br>
+<br>
+
+</body>

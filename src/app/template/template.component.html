@@ -1,0 +1,111 @@
+<br><br><br><br><br>
+<p>template works!</p>
+<html>
+<head>
+<title>Student Registration Form</title>
+
+</head>
+ 
+<body>
+<h4><i>TEMPLATE DRIVEN FORM - STUDENT REGISTRATION DETAILS</i></h4>
+
+<form (ngSubmit)= "onsubmit()" #userform = "ngForm">
+<table align="center" cellpadding = "10">
+ 
+<!----- First Name ---------------------------------------------------------->
+<div>
+<tr>
+<td>FIRST NAME</td>
+<td><input type="text" name="First_Name" ngModel maxlength="30" required/>
+</td>
+</tr>
+
+
+<!----- Last Name ---------------------------------------------------------->
+
+<tr>
+<td>LAST NAME</td>
+<td><input type="text" name="Last_Name" ngModel maxlength="30"/>
+</td>
+</tr>
+
+
+<!----- Email Id ---------------------------------------------------------->
+
+<tr>
+<td>EMAIL ID</td>
+<td><input type="text" name="Email_Id"  ngModel maxlength="100" required email #email = "ngModel"/></td>
+<span *ngIf = "!email.valid && email.touched"><td>Please enter the valid email</td></span>
+</tr>
+
+ 
+<!----- Mobile Number ---------------------------------------------------------->
+
+<tr>
+<td>MOBILE NUMBER</td>
+<td>
+<input type="text" name="Mobile_Number" ngModel maxlength="10" />
+</td>
+</tr>
+
+ 
+<!----- Gender ----------------------------------------------------------->
+
+<tr>
+<td>GENDER</td>
+<td>
+Male <input type="radio" name="Gender" value="Male" ngModel />
+Female <input type="radio" name="Gender" value="Female" ngModel />
+</td>
+</tr>
+</div>
+
+<div ngModelGroup = "address">
+<!----- City ---------------------------------------------------------->
+<tr>
+    <td>CITY</td>
+    <td>
+    <input type="text" name="city" ngModel />
+    </td>
+</tr>
+
+<!----- State ---------------------------------------------------------->
+<tr>
+    <td>STATE</td>
+    <td>
+    <input type="text" name="state" ngModel />
+    </td>
+</tr>
+
+<!----- Country ----------------------------------------------------------->
+<tr>
+    <td>COUNTRY</td>
+    <td>
+        <select name="country" [ngModel] = "'India'">
+            <option *ngFor = "let i of country_list">
+                {{i.country_name}}
+            </option>
+        </select>
+    </td>
+    </tr>
+ 
+<!----- Pincode ---------------------------------------------------------->
+<tr>
+    <td>PINCODE</td>
+    <td>
+    <input type="text" name="pincode" ngModel />
+    </td>
+</tr>
+</div> 
+
+<!----- Submit------------------------------------------------->
+<tr>
+<td colspan="2" align="center">
+<button type="button" (click) = "setDefaultValue()">Set Value</button>
+<input type="submit" value="Submit" [disabled] = "!userform.valid">
+</td>
+</tr>
+</table>
+</form>
+ 
+</body>
